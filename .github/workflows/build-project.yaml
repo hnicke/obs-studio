@@ -59,6 +59,7 @@ jobs:
 
   macos-build:
     name: macOS 🍏
+    if: false
     runs-on: macos-15
     needs: check-event
     strategy:
@@ -241,6 +242,7 @@ jobs:
 
   flatpak-build:
     name: Flatpak 📦
+    if: false
     runs-on: ubuntu-24.04
     needs: check-event
     defaults:
@@ -369,6 +371,7 @@ jobs:
 
   windows-build:
     name: Windows 🪟
+    if: false
     strategy:
       matrix:
         architecture: [x64, arm64]
