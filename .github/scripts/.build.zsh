@@ -211,6 +211,7 @@ build() {
       local cmake_bin='/usr/bin/cmake'
       cmake_args+=(
         --preset ubuntu-ci
+        -DENABLE_LIBFDK:BOOL=ON
         -DENABLE_BROWSER:BOOL=ON
         -DCEF_ROOT_DIR:PATH="${project_root}/.deps/cef_binary_${CEF_VERSION}_${target//ubuntu-/linux_}"
       )
