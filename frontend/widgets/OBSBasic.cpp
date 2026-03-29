@@ -254,6 +254,7 @@ OBSBasic::OBSBasic(QWidget *parent) : OBSMainWindow(parent), undo_s(ui), ui(new 
 	api = InitializeAPIInterface(this);
 
 	ui->setupUi(this);
+	ui->profileMenu->menuAction()->setVisible(false);
 	ui->previewDisabledWidget->setVisible(false);
 
 	/* Set up streaming connections */
