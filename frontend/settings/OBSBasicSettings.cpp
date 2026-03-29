@@ -934,6 +934,7 @@ OBSBasicSettings::OBSBasicSettings(QWidget *parent)
 
 	UpdateAudioWarnings();
 	UpdateAdvNetworkGroup();
+	ApplyManagedOutputLocks();
 
 	ui->audioMsg->setVisible(false);
 	ui->advancedMsg->setVisible(false);
@@ -6046,6 +6047,33 @@ void OBSBasicSettings::UpdateMultitrackVideo()
 		update_advanced_output_settings(false);
 		update_advanced_output_audio_tracks(false);
 	}
+	ApplyManagedOutputLocks();
+}
+
+void OBSBasicSettings::ApplyManagedOutputLocks()
+{
+	QWidget *lockedWidgets[] = {
+		ui->outputMode,
+		ui->advOutAEncoder,
+		ui->advOutEncoder,
+		ui->advOutRescale,
+		ui->advOutRescaleFilter,
+		ui->advOutEncoderProps,
+		ui->advOutRecType,
+		ui->advOutRecPath,
+		ui->advOutRecPathBrowse,
+		ui->advOutRecEncoder,
+		ui->advOutRecAEncoder,
+		ui->advOutTrack1Bitrate,
+		ui->advOutTrack2Bitrate,
+		ui->advOutTrack3Bitrate,
+		ui->advOutTrack4Bitrate,
+		ui->advOutTrack5Bitrate,
+		ui->advOutTrack6Bitrate,
+		ui->videoPage,
+	};
+	for (QWidget *widget : lockedWidgets)
+		widget->setDisabled(true);
 }
 
 void OBSBasicSettings::SimpleStreamAudioEncoderChanged()

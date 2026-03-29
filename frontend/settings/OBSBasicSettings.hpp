@@ -256,6 +256,7 @@ private:
 	void LoadAdvOutputRecordingEncoderProperties();
 	void LoadAdvOutputFFmpegSettings();
 	void LoadAdvOutputAudioSettings();
+	void ApplyManagedOutputLocks();
 	void SetAdvOutputFFmpegEnablement(FFmpegCodecType encoderType, bool enabled, bool enableEncode = false);
 
 	/* audio */
