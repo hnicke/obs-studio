@@ -144,6 +144,7 @@
                 "-DENABLE_DECKLINK=OFF"
             ],
             "secret-opts": [
+                "-DOAUTH_BASE_URL=$OAUTH_BASE_URL",
                 "-DRESTREAM_CLIENTID=$RESTREAM_CLIENTID",
                 "-DRESTREAM_HASH=$RESTREAM_HASH",
                 "-DTWITCH_CLIENTID=$TWITCH_CLIENTID",

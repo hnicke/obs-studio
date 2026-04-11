@@ -10,6 +10,7 @@
       "name": "environmentVars",
       "hidden": true,
       "cacheVariables": {
+        "OAUTH_BASE_URL": {"type": "STRING", "value": "$penv{OAUTH_BASE_URL}"},
         "RESTREAM_CLIENTID": {"type": "STRING", "value": "$penv{RESTREAM_CLIENTID}"},
         "RESTREAM_HASH": {"type": "STRING", "value": "$penv{RESTREAM_HASH}"},
         "TWITCH_CLIENTID": {"type": "STRING", "value": "$penv{TWITCH_CLIENTID}"},
