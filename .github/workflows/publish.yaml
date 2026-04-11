@@ -78,6 +78,7 @@ jobs:
         shell: bash
     env:
       FLATPAK_BUILD_SHARE_PATH: flatpak_app/files/share
+      OAUTH_BASE_URL: ${{ secrets.OAUTH_BASE_URL }}
       TWITCH_CLIENTID: ${{ secrets.TWITCH_CLIENT_ID }}
       TWITCH_HASH: ${{ secrets.TWITCH_HASH }}
       RESTREAM_CLIENTID: ${{ secrets.RESTREAM_CLIENTID }}
