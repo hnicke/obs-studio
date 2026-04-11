@@ -128,6 +128,7 @@ jobs:
       - name: Build OBS Studio 🧱
         uses: ./.github/actions/build-obs
         env:
+          OAUTH_BASE_URL: ${{ secrets.OAUTH_BASE_URL }}
           TWITCH_CLIENTID: ${{ secrets.TWITCH_CLIENT_ID }}
           TWITCH_HASH: ${{ secrets.TWITCH_HASH }}
           RESTREAM_CLIENTID: ${{ secrets.RESTREAM_CLIENTID }}
@@ -203,6 +204,7 @@ jobs:
       - name: Build OBS Studio 🧱
         uses: ./.github/actions/build-obs
         env:
+          OAUTH_BASE_URL: ${{ secrets.OAUTH_BASE_URL }}
           TWITCH_CLIENTID: ${{ secrets.TWITCH_CLIENT_ID }}
           TWITCH_HASH: ${{ secrets.TWITCH_HASH }}
           RESTREAM_CLIENTID: ${{ secrets.RESTREAM_CLIENTID }}
@@ -396,6 +398,7 @@ jobs:
       - name: Build OBS Studio 🧱
         uses: ./.github/actions/build-obs
         env:
+          OAUTH_BASE_URL: ${{ secrets.OAUTH_BASE_URL }}
           TWITCH_CLIENTID: ${{ secrets.TWITCH_CLIENT_ID }}
           TWITCH_HASH: ${{ secrets.TWITCH_HASH }}
           RESTREAM_CLIENTID: ${{ secrets.RESTREAM_CLIENTID }}
