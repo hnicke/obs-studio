@@ -348,6 +348,7 @@ OBSBasicSettings::OBSBasicSettings(QWidget *parent)
 	setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
 
 	ui->setupUi(this);
+	ui->listWidget->item(Pages::STREAM)->setHidden(true);
 
 	main->EnableOutputs(false);
 
