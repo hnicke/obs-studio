@@ -5803,6 +5803,12 @@ void OBSBasicSettings::ApplyManagedOutputLocks()
 		ui->advOutRecPathBrowse,
 		ui->advOutRecEncoder,
 		ui->advOutRecAEncoder,
+		ui->advOutTrack1,
+		ui->advOutTrack2,
+		ui->advOutTrack3,
+		ui->advOutTrack4,
+		ui->advOutTrack5,
+		ui->advOutTrack6,
 		ui->advOutTrack1Bitrate,
 		ui->advOutTrack2Bitrate,
 		ui->advOutTrack3Bitrate,
@@ -5813,6 +5819,13 @@ void OBSBasicSettings::ApplyManagedOutputLocks()
 	};
 	for (QWidget *widget : lockedWidgets)
 		widget->setDisabled(true);
+
+	if (simpleVodTrack)
+		simpleVodTrack->setDisabled(true);
+	if (vodTrackCheckbox)
+		vodTrackCheckbox->setDisabled(true);
+	if (vodTrackContainer)
+		vodTrackContainer->setDisabled(true);
 }
 
 void OBSBasicSettings::SimpleStreamAudioEncoderChanged()
