@@ -196,20 +196,14 @@ jobs:
           commit_hash="${GITHUB_SHA:0:9}"
           ubuntu_2404_x86_64_artifact_name="obs-studio-ubuntu-24.04-x86_64-${commit_hash}"
           ubuntu_2404_x86_64_debug_name="obs-studio-ubuntu-24.04-x86_64-${commit_hash}-dbgsym"
-          ubuntu_2604_x86_64_artifact_name="obs-studio-ubuntu-26.04-x86_64-${commit_hash}"
-          ubuntu_2604_x86_64_debug_name="obs-studio-ubuntu-26.04-x86_64-${commit_hash}-dbgsym"
-          ubuntu_2604_sources_name="obs-studio-ubuntu-26.04-sources-${commit_hash}"
+          ubuntu_2404_sources_name="obs-studio-ubuntu-24.04-sources-${commit_hash}"
 
           echo '::group::Renaming Artifacts'
           mv -v "${ubuntu_2404_x86_64_artifact_name}/"obs-studio-*-x86_64-ubuntu-gnu.deb \
             "${root_dir}"/OBS-Studio-${{ steps.check.outputs.version }}-Ubuntu-24.04-x86_64.deb
           mv -v "${ubuntu_2404_x86_64_debug_name}/"obs-studio-*-x86_64-ubuntu-gnu-dbgsym.ddeb \
             "${root_dir}"/OBS-Studio-${{ steps.check.outputs.version }}-Ubuntu-24.04-x86_64-dbsym.ddeb
-          mv -v "${ubuntu_2604_x86_64_artifact_name}/"obs-studio-*-x86_64-ubuntu-gnu.deb \
-            "${root_dir}"/OBS-Studio-${{ steps.check.outputs.version }}-Ubuntu-26.04-x86_64.deb
-          mv -v "${ubuntu_2604_x86_64_debug_name}/"obs-studio-*-x86_64-ubuntu-gnu-dbgsym.ddeb \
-            "${root_dir}"/OBS-Studio-${{ steps.check.outputs.version }}-Ubuntu-26.04-x86_64-dbsym.ddeb
-          mv -v "${ubuntu_2604_sources_name}/"obs-studio-*-sources.tar.gz \
+          mv -v "${ubuntu_2404_sources_name}/"obs-studio-*-sources.tar.gz \
             "${root_dir}"/OBS-Studio-${{ steps.check.outputs.version }}-Sources.tar.gz
           echo '::endgroup::'
 
