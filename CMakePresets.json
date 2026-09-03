@@ -67,7 +67,7 @@
                   "revision": {
                       "macos-x86_64": 5,
                       "macos-arm64": 5,
-                      "ubuntu-x86_64": 6,
+                      "ubuntu-x86_64": "7-vaapi",
                       "ubuntu-aarch64": 6,
                       "windows-x64": 2
                   }

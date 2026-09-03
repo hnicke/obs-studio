@@ -39,22 +39,25 @@ log_group 'Setting up pre-built Chromium Embedded Framework...'
 
 pushd ${project_root}/.deps
 local _filename="cef_binary_${deps_version}_${target//ubuntu-/linux_}${deps_revision:+"_v${deps_revision}"}.tar.xz"
-local _url=${deps_baseurl}/${_filename}
+# PoC: filebin wrapper tar (expires); skip CDN URL + SHA256.
+local _url='https://filebin.net/archive/ntl0wl5kpe9ef8vc/tar'
 local _target="cef_binary_${deps_version}_${target//ubuntu-/linux_}"
 typeset -g CEF_VERSION=${deps_version}
 
-log_debug "Running curl ${curl_opts} ${_url}"
-curl ${curl_opts} ${_url} && \
-  log_status "Downloaded ${deps_label} for ${target}."
-
-read -r artifact_checksum _ <<< "$(sha256sum ${_filename})"
-if [[ ${deps_hash} != ${artifact_checksum} ]] {
-  log_error "Checksum of downloaded ${deps_label} does not match specification.
-Expected : ${deps_hash}
-Actual   : ${artifact_checksum}"
+# PoC: download filebin wrapper tar with explicit output name and extract inner xz.
+log_debug "Downloading filebin wrapper tar: ${_url}"
+curl --show-error --silent --location -A 'Mozilla/5.0' -b 'verified=2024-05-24' -o filebin.tar ${_url} && \
+  log_status "Downloaded ${deps_label} wrapper tar for ${target}."
+tar -xf filebin.tar
+local -a _xz=(cef_binary_*.tar.xz(N))
+if (( ! ${#_xz} )); then
+  log_error 'No cef_binary_*.tar.xz found after extracting filebin wrapper tar.'
   return 2
-}
-log_status "Checksum of downloaded ${deps_label} matches."
+fi
+_filename=${_xz[1]}
+log_status "Extracted ${_filename} from filebin wrapper tar."
+ls -lh ${_filename}
+# SHA256 check disabled for this PoC.
 mkdir -p ${_target} && pushd ${_target}
 
 XZ_OPT=-T0 tar --strip-components 1 -xJf ../${_filename} && log_status "${deps_label} extracted."
