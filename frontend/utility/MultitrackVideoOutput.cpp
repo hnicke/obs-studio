@@ -427,7 +427,7 @@ void MultitrackVideoOutput::PrepareStreaming(
 	bool hasAutoConfigUrl = !auto_config_url.isEmpty();
 	bool hasCustomConfig = custom_config.has_value();
 
-	if (!isCustomRtmpService) {
+	if (!isCustomRtmpService || !hasCustomConfig) {
 		if (hasAutoConfigUrl) {
 			auto go_live_post = constructGoLivePost(stream_key, maximum_aggregate_bitrate,
 								maximum_video_tracks, vod_track_mixer.has_value(),
